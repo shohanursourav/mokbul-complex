@@ -709,7 +709,7 @@
           </li>
         </ul>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
-          <a class="btn btn--primary" id="directions-btn" href="https://www.google.com/maps/dir/?api=1&destination=26.1499115,88.9202475" target="_blank" rel="noopener">
+          <a class="btn btn--primary" id="directions-btn" href="https://www.google.com/maps/dir/?api=1&destination=Mokbul%20Complex%2C%20Dimla%205350&destination_place_id=ChIJv7xcGupl4zkRe7xQ-qwjF8o" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4zM13 15v-3h-2v3l-3-3.5L11 8v3h3a1 1 0 0 1 1 1v3z"/></svg>
             দিকনির্দেশনা নিন
           </a>
@@ -780,7 +780,7 @@
         <ul>
           <li><a href="tel:+8801319998569">ফোন: 01319-998569</a></li>
           <li><a href="https://wa.me/8801981340287" target="_blank" rel="noopener">হোয়াটসঅ্যাপ: 01981-340287</a></li>
-          <li><a href="https://www.google.com/maps/dir/?api=1&destination=26.1499115,88.9202475" target="_blank" rel="noopener">গুগল ম্যাপে দিকনির্দেশনা</a></li>
+          <li><a href="https://www.google.com/maps/dir/?api=1&destination=Mokbul%20Complex%2C%20Dimla%205350&destination_place_id=ChIJv7xcGupl4zkRe7xQ-qwjF8o" target="_blank" rel="noopener">গুগল ম্যাপে দিকনির্দেশনা</a></li>
           <li>ডিমলা বাজার, নীলফামারী ৫৩৫০</li>
         </ul>
       </div>
@@ -819,6 +819,9 @@ const SITE = {
   shortAddress: "ডিমলা বাজার, ডিমলা, নীলফামারী ৫৩৫০",
   mapCoords:    "26.1499115,88.9202475",
   mapsPlace:    "https://maps.app.goo.gl/8JRTs1y2gCRQ3Yxg9",
+  /* দিকনির্দেশনা লিংক গুগল ম্যাপের এই লিস্টিং-এ নিয়ে যায়। স্থানাঙ্ক দিলে গুগল নিচতলার দোকানের নাম দেখায়। */
+  placeName:    "Mokbul Complex, Dimla 5350",
+  placeId:      "ChIJv7xcGupl4zkRe7xQ-qwjF8o",
   hours:        "প্রতিদিন সকাল ৯টা থেকে রাত ৮টা"
 };
 
@@ -841,8 +844,9 @@ const SITE = {
   const local = "0" + SITE.waNumber.slice(3);
   set("#wa-link", local.slice(0, 5) + "-" + local.slice(5));
 
-  const dirBtn = document.getElementById("directions-btn");
-  if (dirBtn) dirBtn.href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(SITE.mapCoords);
+  const dirUrl = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(SITE.placeName) +
+    "&destination_place_id=" + encodeURIComponent(SITE.placeId);
+  document.querySelectorAll('a[href*="/maps/dir/"]').forEach(a => a.href = dirUrl);
   const placeBtn = document.getElementById("maps-place-btn");
   if (placeBtn) placeBtn.href = SITE.mapsPlace;
 
