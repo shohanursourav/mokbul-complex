@@ -47,9 +47,11 @@ If JavaScript is blocked, all content stays visible (`html.js-reveal` guard), so
 never shows blank sections.
 
 ## Hero
-The hero uses the building photo as a large image on the right side of a white page,
-with a soft white fade so the text stays readable. On mobile the photo moves below
-the text and full width.
+The hero uses the building photo as a large image on the right side of the page.
+The photo itself fades out to transparent towards the text (a CSS mask, `--fade`), so
+the page background shows through: the text stays readable and the photo has no visible
+edge, in light and dark mode. On mobile the photo moves below the text and full width,
+and its top edge fades out the same way (`--fade-m`).
 
 ## How to open it
 - Double-click `index.html`, or
