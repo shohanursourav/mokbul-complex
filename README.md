@@ -62,6 +62,7 @@ the text and full width.
 | Address | মকবুল কমপ্লেক্স, ডিমলা বাজার, ডিমলা, নীলফামারী ৫৩৫০ |
 | Coordinates | 26.1499115, 88.9202475 |
 | Google Maps place | https://maps.app.goo.gl/8JRTs1y2gCRQ3Yxg9 |
+| Google Maps place ID | ChIJv7xcGupl4zkRe7xQ-qwjF8o (listing "Mokbul Complex, Dimla 5350") |
 | Phone (call) | 01319-998569 |
 | WhatsApp | 01981-340287 (= wa.me/8801981340287) |
 
@@ -77,6 +78,8 @@ const SITE = {
   shortAddress: "ডিমলা বাজার, ডিমলা, নীলফামারী ৫৩৫০",
   mapCoords:    "26.1499115,88.9202475",
   mapsPlace:    "https://maps.app.goo.gl/8JRTs1y2gCRQ3Yxg9",
+  placeName:    "Mokbul Complex, Dimla 5350",
+  placeId:      "ChIJv7xcGupl4zkRe7xQ-qwjF8o",
   hours:        "প্রতিদিন সকাল ৯টা থেকে রাত ৮টা"
 };
 ```
@@ -87,6 +90,13 @@ button everywhere on the page.
 Map: it loads after the visitor taps the card, so the page stays fast and the rest of
 the site works with no internet. The embed URL is built from `mapCoords`, and the
 "গুগল ম্যাপে ভবন দেখুন" button opens `mapsPlace`.
+
+Directions: the "দিকনির্দেশনা নিন" button and the footer "গুগল ম্যাপে দিকনির্দেশনা" link both
+open Google Maps directions to the Mokbul Complex listing, built from `placeName` and
+`placeId`. Do not point them at `mapCoords`: with raw coordinates Google names the
+destination after the ground floor shop (মেসার্স সূবর্না সাইকেল গ্যালারী) instead of
+Mokbul Complex. If the Google listing is ever recreated, look up the new ID in Google's
+Place ID Finder and update `placeId`.
 
 ## Small fixes already included
 - Anchor links no longer hide section headings under the sticky header (`scroll-margin-top`).
